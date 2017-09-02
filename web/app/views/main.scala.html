@@ -1,0 +1,296 @@
+@*
+* This template is called from the `index` template. This template
+* handles the rendering of the page header and body tags. It takes
+* two arguments, a `String` for the title of the page and an `Html`
+* object to insert into the body of the page.
+*@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @* Here's where we render the page title `String`. *@
+    <title>CloudSimGUI</title>
+    <link href="@routes.Assets.at("bootstrap.min.css")" rel="stylesheet">
+    <link href="@routes.Assets.at("font-awesome.min.css")" rel="stylesheet">
+        @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">*@
+        @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
+        @*<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>*@
+
+    </head>
+    <body>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <h1>CloudSim GUI</h1>
+                </div>
+            </div>
+
+            <div class="row newDatacenterRow">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pull-right text-right">
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newDatacenter">
+                        New Datacenter
+                    </button>
+                </div>
+            </div>
+
+            <div class="row datacenters-containter" >
+
+                <div class="col-xs-12 datacenter-container" data-datacenter-id="template" data-datacenter-params="{}">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <h3 class="panel-title">Datacenter</h3>
+                                </div>
+                                <div class="col-xs-8 pull-right text-right">
+                                    <a class="btn btn-primary" data-toggle="modal" href="#newHost">New Host</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="row">
+                                                <div class="col-xs-4">
+                                                    <h3 class="panel-title">Host</h3>
+                                                </div>
+                                                <div class="col-xs-8 pull-right text-right">
+                                                    <a class="btn btn-primary" data-toggle="modal" href="#newVM" >New VM</a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel-body host-container" data-host-params="{}">
+                                            <div class="row">
+                                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-body">
+                                                            <div class="row vm-container">
+                                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                                    <div class="panel panel-primary">
+                                                                        <div class="panel-heading">
+                                                                            <h3 class="panel-title text-center">PE</h3>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="panel-footer">
+                                                            <div class="row">
+                                                                <div class="col-xs-4">
+                                                                    <h3 class="panel-title">VM</h3>
+                                                                </div>
+                                                                <div class="col-xs-8 pull-right text-right">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="modals">
+
+                <!-- Modal -->
+            <div class="modal fade" id="newDatacenter" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="modelTitleId">New Datacenter</h4>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <label for="">Datacenter Name</label>
+                                <input type="text" class="form-control" name="name" id="" placeholder="Name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Architecture</label>
+                                <input type="text" class="form-control" name="arch" id="" placeholder="x86">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">OS</label>
+                                <input type="text" class="form-control" name="os" id="" placeholder="Linux">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Vmm</label>
+                                <input type="text" class="form-control" name="vmm" id="" placeholder="Xen">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Time zone</label>
+                                <input type="text" class="form-control" name="timeZone" id="" placeholder="10">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Cost</label>
+                                <input type="text" class="form-control" name="cost" id="" placeholder="3">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Cost per Memory</label>
+                                <input type="text" class="form-control" name="costPerMem" id="" placeholder="0.05">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Cost per Storage</label>
+                                <input type="text" class="form-control" name="costPerStorage" id="" placeholder="0.0001">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Cost per Bw</label>
+                                <input type="text" class="form-control" name="costPerBw" id="" placeholder="0">
+                            </div>
+
+                            <a class="btn btn-primary" data-toggle="modal" href="#newPe" id="">Add Pe</a>
+                            <div class="modal fade pe-modal" id="newPe">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title">New PE</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label for="">Pes Id</label>
+                                                <input type="text" class="form-control" name="id" id="" placeholder="0">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="">Pes MIPS</label>
+                                                <input type="text" class="form-control" name="mips" id="" placeholder="2000">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary" id="savePe">Save</button>
+                                        </div>
+                                    </div>
+                                        <!-- /.modal-content -->
+                                </div>
+                                    <!-- /.modal-dialog -->
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="saveDatacenter">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                <!-- /.modal -->
+
+            <div class="modal fade" id="newHost">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">New Host</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="">Host Id</label>
+                                <input type="text" class="form-control" name="" id="datacenter-host-id" placeholder="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Host Ram MB</label>
+                                <input type="text" class="form-control" name="" id="datacenter-host-ram" placeholder="2048">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Host Storage</label>
+                                <input type="text" class="form-control" name="" id="datacenter-host-storage" placeholder="1000000">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Host BW</label>
+                                <input type="text" class="form-control" name="" id="datacenter-host-bw" placeholder="10000">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                        <!-- /.modal-content -->
+                </div>
+                    <!-- /.modal-dialog -->
+            </div>
+                <!-- /.modal -->
+
+            <div class="modal fade" id="newVM">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">New VM</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="">VM ID</label>
+                                <input type="text" class="form-control" name="" id="vm-id" placeholder="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="">VM Name</label>
+                                <input type="text" class="form-control" name="" id="vm-name" placeholder="Xen">
+                            </div>
+                            <div class="form-group">
+                                <label for="">VM MIPS</label>
+                                <input type="text" class="form-control" name="" id="vm-mips" placeholder="1000">
+                            </div>
+                            <div class="form-group">
+                                <label for="">VM Size</label>
+                                <input type="text" class="form-control" name="" id="vm-size" placeholder="10000">
+                            </div>
+                            <div class="form-group">
+                                <label for="">VM Ram</label>
+                                <input type="text" class="form-control" name="" id="vm-ram" placeholder="512">
+                            </div>
+                            <div class="form-group">
+                                <label for="">VM Ram</label>
+                                <input type="text" class="form-control" name="" id="vm-bw" placeholder="1000">
+                            </div>
+                            <div class="form-group">
+                                <label for="">PES Number</label>
+                                <input type="text" class="form-control" name="" id="vm-pesNumber" placeholder="1">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                        <!-- /.modal-content -->
+                </div>
+                    <!-- /.modal-dialog -->
+            </div>
+                <!-- /.modal -->
+
+        </div>
+
+    </body>
+    <script src="@routes.Assets.at("jquery.min.js")"></script>
+    <script src="@routes.Assets.at("popper.js")"></script>
+    <script src="@routes.Assets.at("bootstrap.min.js")"></script>
+    <script src="@routes.Assets.at("cloudSim.js")"></script>
+</html>
